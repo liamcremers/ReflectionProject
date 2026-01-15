@@ -51,7 +51,7 @@ template <typename T> void JsonToStruct(const nlohmann::json &j, T &obj) {
     std::string key{name};
 
     if (j.contains(key)) {
-      using MemberType = typename[:type_of(member):];
+      using MemberType = [:type_of(member):];
 
       if constexpr (Reflectable<MemberType>) {
         JsonToStruct(j[key], obj.[:member:]);

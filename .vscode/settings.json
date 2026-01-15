@@ -1,4 +1,5 @@
 {
-  "clangd.path": "/home/liamc/ReflectionProject/p2996-install/clangd",
-  "clangd.arguments": []
+  "clangd.path": "${workspaceFolder}/clangd",
+  "clangd.arguments": [],
+  "C_Cpp.intelliSenseEngine": "disabled",
 }

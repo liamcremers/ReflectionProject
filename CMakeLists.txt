@@ -1,13 +1,29 @@
 cmake_minimum_required(VERSION 3.28)
+
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/p2996-install")
+    message(STATUS "Downloading P2996 clang toolchain...")
+    file(DOWNLOAD "https://download.liamcremers.com/p2996-install.zip" "${CMAKE_SOURCE_DIR}/p2996-install.zip" SHOW_PROGRESS)
+
+    message(STATUS "Extracting P2996 clang toolchain...")
+    file(ARCHIVE_EXTRACT INPUT "${CMAKE_SOURCE_DIR}/p2996-install.zip" DESTINATION "${CMAKE_SOURCE_DIR}")
+
+    file(GLOB P2996_BINARIES "${CMAKE_SOURCE_DIR}/p2996-install/bin/*")
+    foreach(binary ${P2996_BINARIES})
+        if(NOT IS_DIRECTORY "${binary}")
+            execute_process(COMMAND chmod +x "${binary}")
+        endif()
+    endforeach()
+
+    file(REMOVE "${CMAKE_SOURCE_DIR}/p2996-install.zip")
+    message(STATUS "P2996 toolchain ready")
+endif()
+
+include(${CMAKE_SOURCE_DIR}/clang-toolchain.cmake)
 project(Reflection CXX)
 
 # Ensure compile_commands.json is generated for clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Include your clang-toolchain.cmake contents here
-include(${CMAKE_SOURCE_DIR}/clang-toolchain.cmake)
-
-# Fetch nlohmann_json before defining targets so include paths are known
 include(FetchContent)
 FetchContent_Declare(
     nlohmann_json
@@ -16,19 +32,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(nlohmann_json)
 
-# Your executable setup
 add_executable(${PROJECT_NAME} main.cpp)
 
-# Link nlohmann_json
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
-
-# Explicitly add nlohmann include dir for IDEs (helps clangd)
-# FetchContent provides nlohmann_json in build/_deps/nlohmann_json-src/include
 target_include_directories(${PROJECT_NAME} PRIVATE
     "${nlohmann_json_SOURCE_DIR}/include"
 )
 
-# libc++ and Clang resource dirs (reflection build)
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE
     "${CMAKE_SOURCE_DIR}/p2996-install/include/c++/v1"
     "${CMAKE_SOURCE_DIR}/p2996-install/include/x86_64-unknown-linux-gnu/c++/v1"
@@ -42,15 +52,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     -stdlib=libc++
 )
 
-set(rpath_dir "${CMAKE_SOURCE_DIR}/p2996-install/lib/x86_64-unknown-linux-gnu")
-
 set_target_properties(${PROJECT_NAME} PROPERTIES
     BUILD_WITH_INSTALL_RPATH TRUE
-    INSTALL_RPATH "${rpath_dir}"
+    INSTALL_RPATH "${CMAKE_SOURCE_DIR}/p2996-install/lib/x86_64-unknown-linux-gnu"
 )
-
-set(watch_sources input.json)
-# Mark as GENERATED so it need not exist at configure time
-set_source_files_properties(${watch_sources} PROPERTIES GENERATED TRUE)
-add_custom_target(watch_input SOURCES ${watch_sources})
-add_dependencies(${PROJECT_NAME} watch_input)
