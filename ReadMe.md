@@ -147,6 +147,30 @@ cmake --install p2996/build-llvm --prefix $PWD/p2996-install
 
 </details>
 
+<details>
+<summary><b>Building P2996 Compiler with Docker</b></summary>
+
+Using Docker provides an isolated build environment. This approach is based on the [simdjson experimental_json_builder](https://github.com/simdjson/experimental_json_builder/blob/main/Dockerfile) Dockerfile.
+</details>
+<details>
+<summary><b>VS Code Setup (clangd)</b></summary>
+
+**Important:** Disable C/C++ IntelliSense and use the P2996-built clangd for proper reflection support.
+
+Add to `.vscode/settings.json`:
+
+```json
+{
+  "clangd.path": "${workspaceFolder}/clangd",
+  "clangd.arguments": [],
+  "C_Cpp.intelliSenseEngine": "disabled",
+}
+```
+
+This ensures VS Code uses the P2996-aware clangd that understands reflection syntax.
+
+</details>
+
 ## References
 
 - [P2996R13 - Reflection for C++26](https://wg21.link/p2996)
