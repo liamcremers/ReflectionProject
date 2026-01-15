@@ -1,0 +1,37 @@
+# Build directories
+
+/build/
+/cmake-build-default/
+
+# CMake generated files
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/build.ninja
+/*.ninja
+
+# Compilation database
+compile_commands.json
+
+/p2996-install/*
+p2996-install/
+# Object files and static/dynamic libs
+*.o
+*.obj
+*.so
+*.so.*
+*.dylib
+*.a
+
+# Editor swap / backup files
+*~
+.DS_Store
+
+# Logs and temporary files
+*.log
+
+# IDE folders (you may want to keep VSCode settings tracked)
+# .vscode/
+.idea/
+run.sh
+p2996-install/*

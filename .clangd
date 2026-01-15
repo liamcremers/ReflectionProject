@@ -1,0 +1,17 @@
+CompileFlags:
+  CompilationDatabase: build/compile_commands.json
+  Add:
+      - -isystem
+      - /home/liamc/ReflectionProject/p2996-install/include/x86_64-unknown-linux-gnu/c++/v1
+      - -isystem
+      - /home/liamc/ReflectionProject/p2996-install/include/c++/v1
+      - -isystem
+      - /home/liamc/ReflectionProject/p2996-install/lib/clang/21/include
+      - -resource-dir
+      - /home/liamc/ReflectionProject/p2996-install/lib/clang/21
+
+      - -std=c++26
+      - -freflection-latest
+      - -stdlib=libc++
+
+
