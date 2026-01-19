@@ -12,7 +12,7 @@ This project expands on initial reflection comparisons. The baseline project foc
 
 ```bash
 git clone https://github.com/liamcremers/ReflectionProject.git
-cd p2996-ssh
+cd ReflectionProject
 ./setup.sh
 ./build/Reflection
 ./watch.sh
@@ -92,8 +92,8 @@ wsl
 
 # Inside WSL
 sudo apt update
-git clone https://github.com/liamcremers/ReflectionProject.git ~/p2996-ssh
-cd ~/p2996-ssh
+git clone https://github.com/liamcremers/ReflectionProject.git ~/ReflectionProject
+cd ~/ReflectionProject
 ./setup.sh
 code --remote wsl+Ubuntu .
 ./watch.sh
@@ -102,7 +102,7 @@ code --remote wsl+Ubuntu .
 ### One-liner for Existing WSL Setup
 
 ```bash
-wsl bash -c "git clone https://github.com/liamcremers/ReflectionProject.git ~/p2996-ssh && cd ~/p2996-ssh && bash setup.sh && bash watch.sh"
+wsl bash -c "git clone https://github.com/liamcremers/ReflectionProject.git ~/ReflectionProject && cd ~/ReflectionProject && bash setup.sh && bash watch.sh"
 ```
 
 ### Install [Github CLI tool](https://raw.githubusercontent.com/cli/cli/refs/heads/trunk/docs/install_linux.md#:~:text=To,%60,-To)
