@@ -2,7 +2,7 @@
 
 Experimental C++26 static reflection implementation demonstrating member lookup, type information, serialization, and property modification using [P2996](https://wg21.link/p2996).
 
-**Research Context:** This repository contains proof-of-concept code supporting academic research comparing P2996's compile-time reflection with Unreal Engine's runtime reflection system. For detailed analysyis, findings, and comparitive evaluation, see the full research paper. For detailed analysis, findings, ands on initial reflection comparisons. The comparative evaluation, see the full research paper.
+**Research Context:** This repository contains proof-of-concept code supporting academic research comparing P2996's compile-time reflection with Unreal Engine's runtime reflection system. For detailed analysyis, findings, and comparitive evaluation, see [the full research paper](https://download.liamcremers.com/GW2526_Cremers_Liam_EN_Paper.pdf).
 
 This project expands on initial reflection comparisons. The baseline project focuses on fundamental reflection capabilities: member lookup, type information, JSON serialization, and dynamic property modification.
 
@@ -176,7 +176,7 @@ This ensures VS Code uses the P2996-aware clangd that understands reflection syn
 - [P2996R13 - Reflection for C++26](https://wg21.link/p2996)
 - [Bloomberg Clang/P2996 Implementation](https://github.com/bloomberg/clang-p2996)
 - [Experimental_json_builder/Dockerfile](https://github.com/simdjson/experimental_json_builder/blob/main/Dockerfile)
-- more credits in the paper...
+- more credits in the [paper](https://download.liamcremers.com/GW2526_Cremers_Liam_EN_Paper.pdf)...
 
 ---
 
