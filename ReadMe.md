@@ -74,8 +74,8 @@ This project evaluates how P2996 and Unreal Engine handle four core reflection c
 | **Type Information** | ✓ | ✓ | Both access member types at compile/runtime |
 | **Serialization** | ✓ | ✓ | P2996 generic, UE requires converter |
 | **Property Modification** | ✓ | ✓ | Both support dynamic value assignment |
-| **Runtime Type Creation** | ✗* | ✗ | Neither creates structs from unknown schemas |
-| **New Member Introduction** | ✗* | ✗ | Both locked at compile-time |
+| **Runtime Type Creation** | ✗ | ✗ | Neither creates structs from unknown schemas |
+| **New Member Introduction** | ✗ | ✗ | Both locked at compile-time |
 
 ---
 
